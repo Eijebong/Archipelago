@@ -25,7 +25,7 @@ from .LADXR.locations.instrument import Instrument
 from .LADXR.locations.constants import CHEST_ITEMS
 from .Locations import (LinksAwakeningLocation, LinksAwakeningRegion,
                         create_regions_from_ladxr, get_locations_to_id)
-from .Options import links_awakening_options, DungeonItemShuffle
+from .Options import links_awakening_options, DungeonItemShuffle, ShuffleInstruments
 
 from .Rom import LADXDeltaPatch
 
@@ -187,7 +187,7 @@ class LinksAwakeningWorld(World):
         self.pre_fill_items = []
         # For any and different world, set item rule instead
         
-        for option in ["maps", "compasses", "small_keys", "nightmare_keys", "stone_beaks"]:
+        for option in ["maps", "compasses", "small_keys", "nightmare_keys", "stone_beaks", "instruments"]:
             option = "shuffle_" + option
             option = self.player_options[option]
 
@@ -227,7 +227,10 @@ class LinksAwakeningWorld(World):
                         continue
 
                     if isinstance(item.item_data, DungeonItemData):
-                        if item.item_data.dungeon_item_type == DungeonItemType.INSTRUMENT:
+                        item_type = item.item_data.ladxr_id[:-1]
+                        shuffle_type = dungeon_item_types[item_type]
+
+                        if item.item_data.dungeon_item_type == DungeonItemType.INSTRUMENT and shuffle_type == ShuffleInstruments.option_vanilla:
                             # Find instrument, lock
                             # TODO: we should be able to pinpoint the region we want, save a lookup table please
                             found = False
@@ -243,10 +246,8 @@ class LinksAwakeningWorld(World):
                                     found = True
                                     break
                                 if found:
-                                    break                            
+                                    break
                         else:
-                            item_type = item.item_data.ladxr_id[:-1]
-                            shuffle_type = dungeon_item_types[item_type]
                             if shuffle_type == DungeonItemShuffle.option_original_dungeon:
                                 self.prefill_original_dungeon[item.item_data.dungeon_index - 1].append(item)
                                 self.pre_fill_items.append(item)
