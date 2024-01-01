@@ -575,10 +575,12 @@ class PokemonEmeraldWorld(World):
                 RandomizeWildPokemon.option_match_base_stats_and_type
             }
             should_allow_legendaries = self.options.allow_wild_legendaries == Toggle.option_true
+            good_early_wilds = self.options.good_early_wilds == Toggle.option_true
 
             for map_data in self.modified_maps:
                 new_encounters: List[Optional[EncounterTableData]] = [None, None, None]
                 old_encounters = [map_data.land_encounters, map_data.water_encounters, map_data.fishing_encounters]
+                is_early = map_data.name in { "MAP_ROUTE101", "MAP_ROUTE102", "MAP_ROUTE103" }
 
                 for i, table in enumerate(old_encounters):
                     if table is not None:
@@ -588,13 +590,15 @@ class PokemonEmeraldWorld(World):
                                 original_species = emerald_data.species[species_id]
                                 target_bst = sum(original_species.base_stats) if should_match_bst else None
                                 target_type = self.random.choice(original_species.types) if should_match_type else None
+                                force_fully_evolved = good_early_wilds and is_early
 
                                 species_old_to_new_map[species_id] = get_random_species(
                                     self.random,
                                     self.modified_species,
                                     target_bst,
                                     target_type,
-                                    should_allow_legendaries
+                                    should_allow_legendaries,
+                                    force_fully_evolved
                                 ).species_id
 
                         new_slots: List[int] = []

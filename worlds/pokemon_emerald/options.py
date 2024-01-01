@@ -549,6 +549,11 @@ class ReceiveItemMessages(Choice):
     option_progression = 1
     option_none = 2
 
+class GoodEarlyWilds(Toggle):
+    """
+    Any wild encounter on route 101 to 103 will be fully evolved
+    """
+    display_name = "Good early wilds"
 
 class EasterEgg(FreeText):
     """
@@ -580,6 +585,7 @@ class PokemonEmeraldOptions(PerGameCommonOptions):
 
     wild_pokemon: RandomizeWildPokemon
     allow_wild_legendaries: AllowWildLegendaries
+    good_early_wilds: GoodEarlyWilds
     starters: RandomizeStarters
     allow_starter_legendaries: AllowStarterLegendaries
     trainer_parties: RandomizeTrainerParties
