@@ -103,7 +103,8 @@ def get_random_species(
         candidates: List[Optional[SpeciesData]],
         nearby_bst: Optional[int] = None,
         species_type: Optional[int] = None,
-        allow_legendaries: bool = True) -> SpeciesData:
+        allow_legendaries: bool = True,
+        force_fully_evolved: bool = False) -> SpeciesData:
     candidates: List[SpeciesData] = [species for species in candidates if species is not None]
 
     if species_type is not None:
@@ -127,6 +128,9 @@ def get_random_species(
             ]
 
         candidates = bst_filtered_candidates
+
+    if force_fully_evolved is not None and nearby_bst is None:
+        candidates = [species for species in candidates if len(species.evolutions) == 0]
 
     return random.choice(candidates)
 
