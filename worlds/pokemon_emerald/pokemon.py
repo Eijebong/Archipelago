@@ -129,7 +129,7 @@ def get_random_species(
 
         candidates = bst_filtered_candidates
 
-    if force_fully_evolved is not None and nearby_bst is None:
+    if force_fully_evolved and nearby_bst is None:
         candidates = [species for species in candidates if len(species.evolutions) == 0]
 
     return random.choice(candidates)
