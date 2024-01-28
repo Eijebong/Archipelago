@@ -164,7 +164,7 @@
 		"flag": "EVENT_DRAGONS_DEN_B1F_DRAGON_FANG",
 		"type": "itemball",
 		"tags": ["Overworld"],
-		"script": "DragonsDenB1FDragonFangScript",
+		"script": "DragonsDenB1FDragonFang",
 		"default_item": "DRAGON_FANG"
 	},
 	"DRAGONS_DEN_B1F_HIDDEN_MAX_ELIXER": {
@@ -207,7 +207,6 @@
 		"tags": ["Hidden"],
 		"script": "EcruteakCityHiddenHyperPotion"
 	},
-
 	"PICKED_UP_FOCUS_BAND": {
 		"label": "Fighting Dojo - Item",
 		"flag": "EVENT_PICKED_UP_FOCUS_BAND",
@@ -217,7 +216,7 @@
 		"default_item": "FOCUS_BAND"
 	},
 	"GOLDENROD_DEPT_STORE_B1F_AMULET_COIN": {
-		"label": "Goldenrod Dept. Store B1F - Item 1",
+		"label": "Goldenrod Dept. Store B1F - Item Behind Card Key Door",
 		"flag": "EVENT_GOLDENROD_DEPT_STORE_B1F_AMULET_COIN",
 		"type": "itemball",
 		"tags": ["Overworld"],
@@ -225,7 +224,7 @@
 		"default_item": "AMULET_COIN"
 	},
 	"GOLDENROD_DEPT_STORE_B1F_BURN_HEAL": {
-		"label": "Goldenrod Dept. Store B1F - Item 2",
+		"label": "Goldenrod Dept. Store B1F - Northwest Item",
 		"flag": "EVENT_GOLDENROD_DEPT_STORE_B1F_BURN_HEAL",
 		"type": "itemball",
 		"tags": ["Overworld"],
@@ -233,7 +232,7 @@
 		"default_item": "BURN_HEAL"
 	},
 	"GOLDENROD_DEPT_STORE_B1F_ETHER": {
-		"label": "Goldenrod Dept. Store B1F - Item 3",
+		"label": "Goldenrod Dept. Store B1F - South Item",
 		"flag": "EVENT_GOLDENROD_DEPT_STORE_B1F_ETHER",
 		"type": "itemball",
 		"tags": ["Overworld"],
@@ -241,7 +240,7 @@
 		"default_item": "ETHER"
 	},
 	"GOLDENROD_DEPT_STORE_B1F_ULTRA_BALL": {
-		"label": "Goldenrod Dept. Store B1F - Item 4",
+		"label": "Goldenrod Dept. Store B1F - Southeast Item",
 		"flag": "EVENT_GOLDENROD_DEPT_STORE_B1F_ULTRA_BALL",
 		"type": "itemball",
 		"tags": ["Overworld"],
@@ -585,7 +584,7 @@
 		"default_item": "ULTRA_BALL"
 	},
 	"MOUNT_MORTAR_1F_OUTSIDE_ETHER": {
-		"label": "Mount Mortar 2F Outside - Item Up West Ladder",
+		"label": "Mount Mortar 1F Outside - Item Up West Ladder",
 		"flag": "EVENT_MOUNT_MORTAR_1F_OUTSIDE_ETHER",
 		"type": "itemball",
 		"tags": ["Overworld"],
@@ -593,7 +592,7 @@
 		"default_item": "ETHER"
 	},
 	"MOUNT_MORTAR_1F_OUTSIDE_REVIVE": {
-		"label": "Mount Mortar 2F Outside - Item Up East Ladder",
+		"label": "Mount Mortar 1F Outside - Item Up East Ladder",
 		"flag": "EVENT_MOUNT_MORTAR_1F_OUTSIDE_REVIVE",
 		"type": "itemball",
 		"tags": ["Overworld"],
@@ -601,7 +600,7 @@
 		"default_item": "REVIVE"
 	},
 	"MOUNT_MORTAR_2F_INSIDE_DRAGON_SCALE": {
-		"label": "Mount Mortar 2F - Inside Item 1",
+		"label": "Mount Mortar 2F - Item 1",
 		"flag": "EVENT_MOUNT_MORTAR_2F_INSIDE_DRAGON_SCALE",
 		"type": "itemball",
 		"tags": ["Overworld"],
@@ -609,7 +608,7 @@
 		"default_item": "DRAGON_SCALE"
 	},
 	"MOUNT_MORTAR_2F_INSIDE_ELIXER": {
-		"label": "Mount Mortar 2F - Inside Item 1",
+		"label": "Mount Mortar 2F - Item 1",
 		"flag": "EVENT_MOUNT_MORTAR_2F_INSIDE_ELIXER",
 		"type": "itemball",
 		"tags": ["Overworld"],
@@ -617,7 +616,7 @@
 		"default_item": "ELIXER"
 	},
 	"MOUNT_MORTAR_2F_INSIDE_ESCAPE_ROPE": {
-		"label": "Mount Mortar 2F - Inside Item 3",
+		"label": "Mount Mortar 2F - Item 3",
 		"flag": "EVENT_MOUNT_MORTAR_2F_INSIDE_ESCAPE_ROPE",
 		"type": "itemball",
 		"tags": ["Overworld"],
@@ -625,7 +624,7 @@
 		"default_item": "ESCAPE_ROPE"
 	},
 	"MOUNT_MORTAR_2F_INSIDE_MAX_POTION": {
-		"label": "Mount Mortar 2F - Inside Item 4",
+		"label": "Mount Mortar 2F - Item 4",
 		"flag": "EVENT_MOUNT_MORTAR_2F_INSIDE_MAX_POTION",
 		"type": "itemball",
 		"tags": ["Overworld"],
@@ -633,7 +632,7 @@
 		"default_item": "MAX_POTION"
 	},
 	"MOUNT_MORTAR_2F_INSIDE_RARE_CANDY": {
-		"label": "Mount Mortar 2F - Inside Item 5",
+		"label": "Mount Mortar 2F - Item 5",
 		"flag": "EVENT_MOUNT_MORTAR_2F_INSIDE_RARE_CANDY",
 		"type": "itemball",
 		"tags": ["Overworld"],
@@ -641,7 +640,7 @@
 		"default_item": "RARE_CANDY"
 	},
 	"MOUNT_MORTAR_2F_INSIDE_TM_DEFENSE_CURL": {
-		"label": "Mount Mortar 2F - Inside Item 6",
+		"label": "Mount Mortar 2F - Item 6",
 		"flag": "EVENT_MOUNT_MORTAR_2F_INSIDE_TM_DEFENSE_CURL",
 		"type": "itemball",
 		"tags": ["Overworld"],
@@ -713,7 +712,7 @@
 		"script": "MountMortar1FOutsideHiddenHyperPotion"
 	},
 	"MOUNT_MORTAR_2F_INSIDE_HIDDEN_FULL_RESTORE": {
-		"label": "Mount Mortar 2F Inside - Hidden Item",
+		"label": "Mount Mortar 2F - Hidden Item",
 		"flag": "EVENT_MOUNT_MORTAR_2F_INSIDE_HIDDEN_FULL_RESTORE",
 		"default_item": "FULL_RESTORE",
 		"type": "hiddenitem",
@@ -1985,7 +1984,7 @@
 		"default_item": "RARE_CANDY"
 	},
 	"WHIRL_ISLAND_B1F_CALCIUM": {
-		"label": "Whirl Island B1F - Item 1",
+		"label": "Whirl Islands B1F - Item 1",
 		"flag": "EVENT_WHIRL_ISLAND_B1F_CALCIUM",
 		"type": "itemball",
 		"tags": ["Overworld"],
@@ -1993,7 +1992,7 @@
 		"default_item": "CALCIUM"
 	},
 	"WHIRL_ISLAND_B1F_CARBOS": {
-		"label": "Whirl Island B1F - Item 2",
+		"label": "Whirl Islands B1F - Item 2",
 		"flag": "EVENT_WHIRL_ISLAND_B1F_CARBOS",
 		"type": "itemball",
 		"tags": ["Overworld"],
@@ -2001,7 +2000,7 @@
 		"default_item": "CARBOS"
 	},
 	"WHIRL_ISLAND_B1F_ESCAPE_ROPE": {
-		"label": "Whirl Island B1F - Item 3",
+		"label": "Whirl Islands B1F - Item 3",
 		"flag": "EVENT_WHIRL_ISLAND_B1F_ESCAPE_ROPE",
 		"type": "itemball",
 		"tags": ["Overworld"],
@@ -2009,7 +2008,7 @@
 		"default_item": "ESCAPE_ROPE"
 	},
 	"WHIRL_ISLAND_B1F_FULL_RESTORE": {
-		"label": "Whirl Island B1F - Item 4",
+		"label": "Whirl Islands B1F - Item 4",
 		"flag": "EVENT_WHIRL_ISLAND_B1F_FULL_RESTORE",
 		"type": "itemball",
 		"tags": ["Overworld"],
@@ -2017,7 +2016,7 @@
 		"default_item": "FULL_RESTORE"
 	},
 	"WHIRL_ISLAND_B1F_HIDDEN_FULL_RESTORE": {
-		"label": "Whirl Island B1F - Hiddden Item on Boulder in West",
+		"label": "Whirl Islands B1F - Hiddden Item on Boulder in West",
 		"flag": "EVENT_WHIRL_ISLAND_B1F_HIDDEN_FULL_RESTORE",
 		"default_item": "FULL_RESTORE",
 		"type": "hiddenitem",
@@ -2025,7 +2024,7 @@
 		"script": "WhirlIslandB1FHiddenFullRestore"
 	},
 	"WHIRL_ISLAND_B1F_HIDDEN_RARE_CANDY": {
-		"label": "Whirl Island B1F - Hiddden Item in Northeast",
+		"label": "Whirl Islands B1F - Hiddden Item in Northeast",
 		"flag": "EVENT_WHIRL_ISLAND_B1F_HIDDEN_RARE_CANDY",
 		"default_item": "RARE_CANDY",
 		"type": "hiddenitem",
@@ -2033,7 +2032,7 @@
 		"script": "WhirlIslandB1FHiddenRareCandy"
 	},
 	"WHIRL_ISLAND_B1F_HIDDEN_ULTRA_BALL": {
-		"label": "Whirl Island B1F - Hiddden Item in Northwest",
+		"label": "Whirl Islands B1F - Hiddden Item in Northwest",
 		"flag": "EVENT_WHIRL_ISLAND_B1F_HIDDEN_ULTRA_BALL",
 		"default_item": "ULTRA_BALL",
 		"type": "hiddenitem",
@@ -2041,7 +2040,7 @@
 		"script": "WhirlIslandB1FHiddenUltraBall"
 	},
 	"WHIRL_ISLAND_B1F_NUGGET": {
-		"label": "Whirl Island B1F - Item 5",
+		"label": "Whirl Islands B1F - Item 5",
 		"flag": "EVENT_WHIRL_ISLAND_B1F_NUGGET",
 		"type": "itemball",
 		"tags": ["Overworld"],
@@ -2049,7 +2048,7 @@
 		"default_item": "NUGGET"
 	},
 	"WHIRL_ISLAND_B2F_FULL_RESTORE": {
-		"label": "Whirl Island B2F - Item 1",
+		"label": "Whirl Islands B2F - Item 1",
 		"flag": "EVENT_WHIRL_ISLAND_B2F_FULL_RESTORE",
 		"type": "itemball",
 		"tags": ["Overworld"],
@@ -2057,7 +2056,7 @@
 		"default_item": "FULL_RESTORE"
 	},
 	"WHIRL_ISLAND_B2F_MAX_ELIXER": {
-		"label": "Whirl Island B2F - Item 2",
+		"label": "Whirl Islands B2F - Item 2",
 		"flag": "EVENT_WHIRL_ISLAND_B2F_MAX_ELIXER",
 		"type": "itemball",
 		"tags": ["Overworld"],
@@ -2065,7 +2064,7 @@
 		"default_item": "MAX_ELIXER"
 	},
 	"WHIRL_ISLAND_B2F_MAX_REVIVE": {
-		"label": "Whirl Island B2F - Item 3",
+		"label": "Whirl Islands B2F - Item 3",
 		"flag": "EVENT_WHIRL_ISLAND_B2F_MAX_REVIVE",
 		"type": "itemball",
 		"tags": ["Overworld"],
@@ -2073,7 +2072,7 @@
 		"default_item": "MAX_REVIVE"
 	},
 	"WHIRL_ISLAND_NE_ULTRA_BALL": {
-		"label": "Whirl Island 1F - Item in Northeast",
+		"label": "Whirl Islands 1F - Item in Northeast",
 		"flag": "EVENT_WHIRL_ISLAND_NE_ULTRA_BALL",
 		"type": "itemball",
 		"tags": ["Overworld"],
@@ -2081,14 +2080,13 @@
 		"default_item": "ULTRA_BALL"
 	},
 	"WHIRL_ISLAND_SW_ULTRA_BALL": {
-		"label": "Whirl Island 1F - Item in Southwest",
+		"label": "Whirl Islands 1F - Item in Southwest",
 		"flag": "EVENT_WHIRL_ISLAND_SW_ULTRA_BALL",
 		"type": "itemball",
 		"tags": ["Overworld"],
 		"script": "WhirlIslandSWUltraBall",
 		"default_item": "ULTRA_BALL"
 	},
-
 	"TM49_FURY_CUTTER": {
 		"label": "Azalea Gym - TM49 from Bugsy",
 		"flag": "EVENT_GOT_TM49_FURY_CUTTER",
@@ -2274,7 +2272,7 @@
 		"script": "AP_NPC_ElmsLab_S_S_TICKET"
 	},
 	"METAL_COAT_FROM_GRANDPA_ON_SS_AQUA": {
-		"label": "SS. Aqua - Metal Coat from Grandpa",
+		"label": "S.S. Aqua - Metal Coat from Grandpa",
 		"flag": "EVENT_GOT_METAL_COAT_FROM_GRANDPA_ON_SS_AQUA",
 		"type": "giveitem",
 		"tags": ["NPCGift"],
@@ -2530,7 +2528,7 @@
 		"script": "AP_NPC_Route25_NUGGET"
 	},
 	"TM37_SANDSTORM": {
-		"label": "Route 27 - Sandstorm from Sandstorm Guy ?",
+		"label": "Route 27 - Sandstorm from Woman in House",
 		"flag": "EVENT_GOT_TM37_SANDSTORM",
 		"type": "giveitem",
 		"tags": ["NPCGift"],
@@ -2538,7 +2536,7 @@
 		"script": "AP_NPC_Route27SandstormHouse_TM_SANDSTORM"
 	},
 	"TM47_STEEL_WING": {
-		"label": "Route 28 - Steel Wing from Steel Wing Guy ?",
+		"label": "Route 28 - Steel Wing from Celebrity in House",
 		"flag": "EVENT_GOT_TM47_STEEL_WING",
 		"type": "giveitem",
 		"tags": ["NPCGift"],
@@ -2778,7 +2776,7 @@
 		"script": "AP_NPC_TeamRocketBaseB2F_HM_WHIRLPOOL"
 	},
 	"HP_UP_FROM_VERMILION_GUY": {
-		"label": "Vermilion City - HP Up from Lance",
+		"label": "Vermilion City - HP Up from Man by PokeCenter",
 		"flag": "EVENT_GOT_HP_UP_FROM_VERMILION_GUY",
 		"type": "giveitem",
 		"tags": ["NPCGift"],
@@ -2817,7 +2815,14 @@
 		"default_item": "POTION",
 		"script": "AP_NPC_ElmsLab_POTION"
 	},
-
+	"POKE_BALL_FROM_ELMS_AIDE": {
+		"label": "Elm's Lab - Gift from Aide After Returning Mystery Egg",
+		"flag": "EVENT_GOT_POKE_BALL_FROM_ELMS_AIDE",
+		"type": "giveitem",
+		"tags": ["NPCGift"],
+		"default_item": "POKE_BALL",
+		"script": "AP_NPC_ElmsLab_POKE_BALL"
+	},
 	"ZEPHYR_BADGE_FROM_FALKNER": {
 		"label": "Violet Gym - Zephyr Badge from Falkner",
 		"flag": "EVENT_ZEPHYR_BADGE_FROM_FALKNER",
@@ -2882,7 +2887,6 @@
 		"default_item": "RISING_BADGE",
 		"script": "AP_Badge_BlackthornGym_RISING_BADGE"
 	},
-
 	"BOULDER_BADGE_FROM_BROCK": {
 		"label": "Pewter Gym - Boulder Badge from Brock",
 		"flag": "EVENT_BOULDER_BADGE_FROM_BROCK",

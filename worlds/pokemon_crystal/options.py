@@ -34,6 +34,12 @@ class RandomizeWilds(Toggle):
     default = 0
 
 
+class NormalizeEncounterRates(Toggle):
+    """Normalizes chance of encountering each wild Pokemon slot"""
+    display_name = "Normalize Encounter Rates"
+    default = 0
+
+
 class RandomizeStaticPokemon(Toggle):
     """Randomizes species of static Pokemon encounters"""
     display_name = "Randomize Static Pokemon"
@@ -63,6 +69,26 @@ class FullTmHmCompatibility(Toggle):
     """All Pokemon can learn any TM/HM"""
     display_name = "Full TM/HM Compatibility"
     default = 0
+
+
+class ReusableTMs(Toggle):
+    """TMs can be used an infinite number of times"""
+    display_name = "Reusable TMs"
+    default = 0
+
+
+class GuaranteedCatch(Toggle):
+    """Balls have a 100% success rate"""
+    display_name = "Guaranteed Catch"
+    default = 0
+
+
+class MinimumCatchRate(Range):
+    """Sets a minimum catch rate for wild Pokemon"""
+    display_name = "Minimum Catch Rate"
+    default = 0
+    range_start = 0
+    range_end = 255
 
 
 class BlindTrainers(Toggle):
@@ -99,10 +125,14 @@ class PokemonCrystalOptions(PerGameCommonOptions):
     require_itemfinder: RequireItemfinder
     randomize_starters: RandomizeStarters
     randomize_wilds: RandomizeWilds
+    normalize_encounter_rates: NormalizeEncounterRates
     randomize_static_pokemon: RandomizeStaticPokemon
     randomize_trainer_parties: RandomizeTrainerParties
     randomize_learnsets: RandomizeLearnsets
     full_tmhm_compatibility: FullTmHmCompatibility
+    reusable_tms: ReusableTMs
+    guaranteed_catch: GuaranteedCatch
+    minimum_catch_rate: MinimumCatchRate
     blind_trainers: BlindTrainers
     better_marts: BetterMarts
     experience_modifier: ExpModifier
