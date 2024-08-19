@@ -26,6 +26,14 @@ class Goal(Choice):
     option_legendary_hunt = 3
 
 
+class SkipE4(Toggle):
+    """
+    Whether or not to skip e4 directly to champion.
+    /!\\ This is not an official option and is only present in this apworld
+    """
+    display_name = "Skip E4"
+
+
 class RandomizeBadges(Choice):
     """
     Adds Badges to the pool.
@@ -813,6 +821,7 @@ class EasterEgg(FreeText):
 @dataclass
 class PokemonEmeraldOptions(PerGameCommonOptions):
     goal: Goal
+    skip_e4: SkipE4
 
     badges: RandomizeBadges
     hms: RandomizeHms
