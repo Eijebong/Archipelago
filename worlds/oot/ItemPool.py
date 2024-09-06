@@ -436,6 +436,8 @@ def get_pool_core(world):
                 shuffle_item = False
                 location.show_in_spoiler = False
             else:
+                if location.name[-1] in {'1', '2', '3', '4'}:
+                    shuffle_item = False
                 remain_shop_items.append(item)
 
         # Business Scrubs
