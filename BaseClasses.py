@@ -579,32 +579,107 @@ class MultiWorld():
 
         return False
 
-    def get_spheres(self) -> Iterator[Set[Location]]:
+    def get_spheres(self, included_locations: Optional[Collection[Location]] = None,
+                    stop_once_included_locations_reached: bool = True,
+                    unreachable_locations_sentinel: Optional[Set[Location]] = None) -> Iterator[Set[Location]]:
         """
         yields a set of locations for each logical sphere
 
-        If there are unreachable locations, the last sphere of reachable
-        locations is followed by an empty set, and then a set of all of the
-        unreachable locations.
+        If there are unreachable locations, the last sphere of reachable locations is followed by an empty set
+        (or `unreachable_locations_sentinel`), and then a set of all unreachable locations.
+
+        :param included_locations: Filter yielded spheres to only contain these locations. Iteration will finish as soon
+        as all of these locations have been reached. If a sphere contains no locations after filtering, an empty set
+        will be yielded. Increases performance by ignoring non-advancement locations not in `included_locations`.
+        :param stop_once_included_locations_reached: Only relevant when `included_locations` is provided. When True,
+        iteration stops as soon as all locations in `included_locations` have been reached, which can increase
+        performance. When False, iteration will continue yielding filtered spheres (they will be empty after filtering)
+        until all advancement locations not in `included_locations` have been reached. This can yield 1 fewer spheres
+        than exist in the multiworld because the last sphere could contain only non-advancement locations.
+        :param unreachable_locations_sentinel: When provided, this object is yielded before yielding unreachable
+        locations, otherwise a new empty set is yielded instead. If `included_locations` has been provided, providing
+        `unreachable_locations_sentinel` is the only way to tell the difference between a sphere not containing any
+        locations in `included_locations`, and the set that precedes unreachable locations.
+
         """
+        locations: Iterable[Location]
+        if included_locations is not None:
+            locations = included_locations
+        else:
+            locations = self.get_locations()
+
+        # Split locations into advancement and non-advancement.
+        included_advancement_locations: set[Location] = set()
+        included_non_advancement_locations: set[Location] = set()
+        for loc in locations:
+            if loc.advancement:
+                included_advancement_locations.add(loc)
+            else:
+                included_non_advancement_locations.add(loc)
+
+        # Find excluded advancement locations.
+        excluded_advancement_locations: set[Location]
+        if included_locations:
+            excluded_advancement_locations = {loc for loc in self.get_locations()
+                                              if loc.advancement and loc not in included_advancement_locations}
+        else:
+            # All locations are included.
+            excluded_advancement_locations = set()
+
         state = CollectionState(self)
-        locations = set(self.get_filled_locations())
+        while (included_advancement_locations
+               or included_non_advancement_locations
+               or (not stop_once_included_locations_reached and excluded_advancement_locations)):
+            included_advancement_sphere: Set[Location] = {loc for loc in included_advancement_locations
+                                                          if loc.can_reach(state)}
+            excluded_advancement_sphere: Set[Location] = {loc for loc in excluded_advancement_locations
+                                                          if loc.can_reach(state)}
+            included_non_advancement_sphere: Set[Location] = {loc for loc in included_non_advancement_locations
+                                                              if loc.can_reach(state)}
+            if not included_advancement_sphere and not excluded_advancement_sphere:
+                # There are no reachable advancement locations remaining. Yield the current sphere, if non-empty,
+                # followed by any unreachable locations.
+                if included_non_advancement_sphere:
+                    yield included_non_advancement_sphere
+                    included_non_advancement_locations -= included_non_advancement_sphere
 
-        while locations:
-            sphere: Set[Location] = set()
+                # Yield any unreachable locations.
+                if (included_non_advancement_locations
+                        or included_advancement_locations
+                        or (not stop_once_included_locations_reached and excluded_advancement_locations)):
+                    # Re-use the larger of the two existing sets to avoid a copy, and for better `|=` performance.
+                    if len(included_non_advancement_locations) > len(included_advancement_locations):
+                        unreachable_included_locations = included_non_advancement_locations
+                        unreachable_included_locations |= included_advancement_locations
+                    else:
+                        unreachable_included_locations = included_non_advancement_locations
+                        unreachable_included_locations |= included_advancement_locations
 
-            for location in locations:
-                if location.can_reach(state):
-                    sphere.add(location)
-            yield sphere
-            if not sphere:
-                if locations:
-                    yield locations  # unreachable locations
+                    # Unreachable locations are preceded by either the sentinel or an empty set.
+                    yield unreachable_locations_sentinel if unreachable_locations_sentinel is not None else set()
+                    yield unreachable_included_locations
                 break
 
-            for location in sphere:
-                state.collect(location.item, True, location)
-            locations -= sphere
+            # Collect all advancements in the sphere into the state.
+            for advancements in (included_advancement_sphere, excluded_advancement_sphere):
+                for location in advancements:
+                    state.collect(location.item, True, location)
+
+            # Remove the sphere locations from each set.
+            included_advancement_locations -= included_advancement_sphere
+            excluded_advancement_locations -= excluded_advancement_sphere
+            included_non_advancement_locations -= included_non_advancement_sphere
+
+            # Combine the included locations in the sphere into a single set.
+            # Re-use the larger of the two existing sets to avoid a copy, and for better `|=` performance.
+            if len(included_non_advancement_sphere) > len(included_advancement_sphere):
+                included_sphere = included_non_advancement_sphere
+                included_sphere |= included_advancement_sphere
+            else:
+                included_sphere = included_advancement_sphere
+                included_sphere |= included_non_advancement_sphere
+            # Yield the included sphere locations.
+            yield included_sphere
 
     def fulfills_accessibility(self, state: Optional[CollectionState] = None):
         """Check if accessibility rules are fulfilled with current or supplied state."""
