@@ -90,7 +90,7 @@ def addBank34(rom, item_list):
             return nameLookup[name]
         if len(name) + 1 + nextItemLookup >= 0x4000:
             return nameLookup[AnItemText]
-        asm = ASM(f'db "{name}", $ff\n')
+        asm = ASM('db "{}", $ff\n'.format(name.replace("\"", "'")))
         rom.patch(0x34, nextItemLookup, None, asm)
         patch_len = len(binascii.unhexlify(asm))
         nameLookup[name] = nextItemLookup + 0x4000
