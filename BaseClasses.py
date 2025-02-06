@@ -547,37 +547,41 @@ class MultiWorld():
             return all((self.has_beaten_game(state, p) for p in range(1, self.players + 1)))
 
     def can_beat_game(self, starting_state: Optional[CollectionState] = None) -> bool:
+        player_ids = self.player_ids
+        beaten_game_players: Set[int] = set()
         if starting_state:
-            if self.has_beaten_game(starting_state):
+            for player in player_ids:
+                if self.has_beaten_game(starting_state, player):
+                    beaten_game_players.add(player)
+            if len(beaten_game_players) == len(player_ids):
                 return True
             state = starting_state.copy()
         else:
             state = CollectionState(self)
-            if self.has_beaten_game(state):
+            for player in player_ids:
+                if self.has_beaten_game(state, player):
+                    beaten_game_players.add(player)
+            if len(beaten_game_players) == len(player_ids):
                 return True
+
         prog_locations = {location for location in self.get_locations() if location.item
                           and location.item.advancement and location not in state.locations_checked}
 
-        while prog_locations:
-            sphere: Set[Location] = set()
-            # build up spheres of collection radius.
-            # Everything in each sphere is independent from each other in dependencies and only depends on lower spheres
-            for location in prog_locations:
-                if location.can_reach(state):
-                    sphere.add(location)
+        # CollectionState.sweep_for_events also yields group IDs, but those don't have a game to beat, so consider all
+        # groups to be able to beat their games from the start.
+        beaten_game_players.update(self.groups.keys())
+        all_games_beaten_length = len(player_ids) + len(self.groups)
 
-            if not sphere:
-                # ran out of places and did not finish yet, quit
-                return False
-
-            for location in sphere:
-                state.collect(location.item, True, location)
-            prog_locations -= sphere
-
-            if self.has_beaten_game(state):
-                return True
-
-        return False
+        for _ in state.sweep_for_advancements(prog_locations, yield_each_sweep=True,
+                                              checked_locations=state.locations_checked):
+            for player in player_ids:
+                # Skip any players than could already beat their game from a previous iteration.
+                if player not in beaten_game_players and self.has_beaten_game(state, player):
+                    beaten_game_players.add(player)
+                    if len(beaten_game_players) == all_games_beaten_length:
+                        # All players can now beat their games.
+                        return True
+        return self.has_beaten_game(state)
 
     def get_spheres(self, included_locations: Optional[Collection[Location]] = None,
                     stop_once_included_locations_reached: bool = True,
