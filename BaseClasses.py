@@ -652,8 +652,8 @@ class MultiWorld():
                         unreachable_included_locations = included_non_advancement_locations
                         unreachable_included_locations |= included_advancement_locations
                     else:
-                        unreachable_included_locations = included_non_advancement_locations
-                        unreachable_included_locations |= included_advancement_locations
+                        unreachable_included_locations = included_advancement_locations
+                        unreachable_included_locations |= included_non_advancement_locations
 
                     # Unreachable locations are preceded by either the sentinel or an empty set.
                     yield unreachable_locations_sentinel if unreachable_locations_sentinel is not None else set()
