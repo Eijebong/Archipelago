@@ -1233,7 +1233,8 @@ def distribute_items_restrictive(multiworld: MultiWorld,
 
     if prioritylocations:
         # "priority fill"
-        fill_restrictive(multiworld, multiworld.state, prioritylocations, progitempool,
+        maximum_exploration_state = sweep_from_pool(multiworld.state)
+        fill_restrictive(multiworld, maximum_exploration_state, prioritylocations, progitempool,
                          single_player_placement=single_player, swap=False, on_place=mark_for_locking, name="Priority",
                          initial_bulk_fill=do_bulk_fill)
         accessibility_corrections(multiworld, multiworld.state, prioritylocations, progitempool)
@@ -1241,14 +1242,15 @@ def distribute_items_restrictive(multiworld: MultiWorld,
 
     if progitempool:
         # "advancement/progression fill"
+        maximum_exploration_state = sweep_from_pool(multiworld.state)
         if panic_method == "swap":
-            fill_restrictive(multiworld, multiworld.state, defaultlocations, progitempool, swap=True,
+            fill_restrictive(multiworld, maximum_exploration_state, defaultlocations, progitempool, swap=True,
                              name="Progression", single_player_placement=single_player, initial_bulk_fill=do_bulk_fill)
         elif panic_method == "raise":
-            fill_restrictive(multiworld, multiworld.state, defaultlocations, progitempool, swap=False,
+            fill_restrictive(multiworld, maximum_exploration_state, defaultlocations, progitempool, swap=False,
                              name="Progression", single_player_placement=single_player, initial_bulk_fill=do_bulk_fill)
         elif panic_method == "start_inventory":
-            fill_restrictive(multiworld, multiworld.state, defaultlocations, progitempool, swap=False,
+            fill_restrictive(multiworld, maximum_exploration_state, defaultlocations, progitempool, swap=False,
                              allow_partial=True, name="Progression", single_player_placement=single_player,
                              initial_bulk_fill=do_bulk_fill)
             if progitempool:
